@@ -177,7 +177,9 @@ export default function NFTGallery() {
         <div className={styles.nft_gallery}>
           <div className={styles.nfts_display}>
             {filteredNfts?.length ? (
-              filteredNfts.map((nft, index) => (
+              filteredNfts
+              .filter((nft) => nft.media && nft.media.raw && nft.media.raw.includes('ipfs') && (!nft.media[0].format || nft.media[0].format === 'mp4' || nft.media[0].format === 'gif'))
+              .map((nft, index) => (
                 <NftCard
                   key={index}
                   nft={nft}
