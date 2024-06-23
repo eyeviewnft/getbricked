@@ -4,6 +4,7 @@ import React, {
     useImperativeHandle,
     forwardRef,
   } from "react";
+  import FaExternalLinkAlt from "react-icons/fa";
   
   const bricks = {
     6284070: "#7f7f7f",
@@ -66,6 +67,7 @@ import React, {
       const [customHeight, setCustomHeight] = useState(32);
       const [customColor, setCustomColor] = useState("white");
       const [layers, setLayers] = useState(1);
+      const [instructionsGenerated, setInstructionsGenerated] = useState(false);
   
       useImperativeHandle(ref, () => ({
         processImage: handleImageUpload,
@@ -142,6 +144,7 @@ import React, {
               const ipfsGatewayUrl = selectedNftImage.raw;
               const image = await downloadImage(ipfsGatewayUrl);
               await processImage();
+              setInstructionsGenerated(true);
               return pixelArtCanvasRef.current;
             } else {
               console.error("Invalid selectedNftImage object");
@@ -311,7 +314,7 @@ import React, {
   
             let uuid = reverseLookup(hexColor, bricks);
   
-            colorKeyTable += `<td class="mr-2">${label}: <a target="_blank" rel="noopener noreferrer" href="${getBrickLink(uuid)}">${uuid}</a><span>x ${brickCount}</span></td>`;
+            colorKeyTable += `<td class="mr-2">${label}: <a target="_blank" rel="noopener noreferrer" href="${getBrickLink(uuid)}">${uuid}</a><FaExternalLinkAlt /><span>x ${brickCount}</span></td>`;
           });
   
           piecesCountRef.current.textContent = piecesCountTotal;
@@ -475,16 +478,23 @@ import React, {
             ></div>
             <span ref={generateButtonTextRef}>Generate Instructions</span>
           </button>
+          {instructionsGenerated && (
+          <p>Open each link below and add correct amount to basket on Lego website</p>
+        )}
           <canvas ref={scaledCanvasRef} style={{ display: "none" }}></canvas>
           <canvas ref={thumbnailCanvasRef} style={{ display: "none" }}></canvas>
           <div ref={colorKeyDivRef} className="mt-3"></div>
-          <div ref={piecesCountRef} className="mt-3"></div>
+          {instructionsGenerated && (
+          <p>Total pieces count</p>
+        )}<div ref={piecesCountRef} className="mt-3"></div>
           <canvas
             ref={pixelArtCanvasRef}
             className={`b-${customWidth}x${customHeight}`}
             style={{ width: "100%" }}
           ></canvas>
+          {instructionsGenerated && (
           <button onClick={downloadCanvas}>Download Instructions</button>
+        )}
         </div>
       );
     },

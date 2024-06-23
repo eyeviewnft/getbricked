@@ -6,10 +6,10 @@ export default function Navbar() {
 			<a href="https://alchemy.com/?a=create-web3-dapp" target={"_blank"}>
 				<img
 					className={styles.alchemy_logo}
-					src="/alchemy_logo.svg"
+					src="/getBricked_logo_v2.png"
 				></img>
 			</a>
-			<ConnectButton></ConnectButton>
+			<ConnectButton className={styles.connectButton}></ConnectButton>
 		</nav>
 	);
 }

@@ -62,7 +62,7 @@ export default function NFTGallery() {
       if (nfts?.length && pageKey) {
         setNfts((prevState) => [...prevState, ...newNfts]);
         let uniqueCollectionNames = [
-          ...new Set(nfts.map((nft) => nft.collectionName)),
+          ...new Set(newNfts.filter((nft) => nft.media && nft.media.raw && nft.media.raw.includes('ipfs')).map((nft) => nft.collectionName)),
         ];
         setCollectionNames(uniqueCollectionNames);
         console.log(collectionNames);
@@ -178,7 +178,7 @@ export default function NFTGallery() {
           <div className={styles.nfts_display}>
             {filteredNfts?.length ? (
               filteredNfts
-              .filter((nft) => nft.media && nft.media.raw && nft.media.raw.includes('ipfs') && (!nft.media[0].format || nft.media[0].format === 'mp4' || nft.media[0].format === 'gif'))
+              .filter((nft) => nft.media && nft.media.raw && nft.media.raw.includes('ipfs'))
               .map((nft, index) => (
                 <NftCard
                   key={index}

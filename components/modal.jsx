@@ -32,7 +32,6 @@ export default function Modal({ nft, onClose, selectedChain }) {
         </div>
         <div className={styles.info_container}>
           <h3>{nft.title}</h3>
-          <p>{nft.description}</p>
         </div>
         <ImageProcessor ref={imageProcessorRef} selectedNftImage={nft.media} />
       </div>
