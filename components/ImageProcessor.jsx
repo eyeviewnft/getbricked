@@ -7,44 +7,45 @@ import React, {
   import FaExternalLinkAlt from "react-icons/fa";
   
   const bricks = {
-    6284070: "#7f7f7f",
-    6284071: "#b3b3b3",
-    6284572: "#ffffff",
-    6284573: "#d9c58a",
-    6284574: "#ff2928",
-    6284575: "#4d95fb",
-    6284577: "#ffed02",
-    6284582: "#ff9634",
-    6284583: "#b9e74f",
-    6284584: "#506c9d",
-    6284585: "#88323f",
-    6284586: "#835138",
-    6284587: "#feb5f0",
-    6284589: "#9c734f",
-    6284592: "#fffbe0",
-    6284595: "#7a803a",
-    6284596: "#7e7e7e",
-    6284598: "#ddec9b",
-    6284602: "#90bbf7",
-    6311436: "#ff719d",
-    6311437: "#1fa6a0",
-    6315196: "#ffddb9",
-    6322813: "#503b16",
-    6322818: "#d8f9f0",
-    6322819: "#71bddc",
-    6322820: "#d0a7e3",
-    6322821: "#fc44bf",
-    6322822: "#ffbf31",
-    6322823: "#c1e0fe",
-    6322824: "#3f99cc",
-    6322840: "#ac603d",
-    6322841: "#a69579",
-    6322842: "#99a6af",
-    6343472: "#e79f71",
-    6343806: "#fffe88",
-    6353793: "#6cd554",
-    6376825: "#fffd04",
-    6396247: "#38c764",
+    4211399: "#7f7f7f",    // MEDIUM STONE GREY
+302424:  "#b3b3b3",    // JAUNE (YELLOW)
+302401:  "#ffffff",    // BLANC (WHITE)
+6151664: "#d9c58a",    // DARK AZUR
+302421:  "#ff2928",    // ROUGE (RED)
+6252043: "#4d95fb",    // BLEU TRANSPARENT (TRANSPARENT BLUE)
+6073040: "#ffed02",    // FLAME YELLOWISH ORANGE
+6252042: "#ff9634",    // ROUGE TRANSPARENT (TRANSPARENT RED)
+4621557: "#b9e74f",    // BRIGHT YELLOWISH GREEN
+4184108: "#506c9d",    // EARTH BLUE
+4183901: "#88323f",    // NEW DARK RED
+6186012: "#835138",    // DARK ORANGE
+6258091: "#feb5f0",    // CORAL
+6330584: "#9c734f",    // NOUGAT
+6252041: "#fffbe0",    // TRANSPARENT
+4524929: "#7a803a",    // ORANGE
+4210719: "#7e7e7e",    // DARK STONE GREY
+6213778: "#ddec9b",    // BRIGHT BLUGREEN
+4179826: "#90bbf7",    // MEDIUM BLUE
+6096942: "#ff719d",    // MAGENTA
+6217797: "#1fa6a0",    // ROSE
+4524929: "#ffddb9",    // ORANGE
+302421:  "#503b16",    // ROUGE (RED)
+4524929: "#d8f9f0",    // ORANGE
+4211399: "#71bddc",    // MEDIUM STONE GREY
+302428:  "#d0a7e3",    // DARK GREEN
+302421:  "#fc44bf",    // ROUGE (RED)
+4524929: "#ffbf31",    // ORANGE
+302421:  "#c1e0fe",    // ROUGE (RED)
+4211399: "#3f99cc",    // MEDIUM STONE GREY
+4524929: "#ac603d",    // ORANGE
+4211399: "#a69579",    // MEDIUM STONE GREY
+4211399: "#99a6af",    // MEDIUM STONE GREY
+4524929: "#e79f71",    // ORANGE
+302424:  "#fffe88",    // JAUNE (YELLOW)
+4524929: "#6cd554",    // ORANGE
+302424:  "#fffd04",    // JAUNE (YELLOW)
+4524929: "#38c764",     // ORANGE
+302426: "#000000"      // BLACK
   };
   
   const ImageProcessor = forwardRef(
@@ -74,7 +75,7 @@ import React, {
       }));
   
       function getBrickLink(uuid) {
-        let url = `https://www.lego.com/en-gb/pick-and-build/pick-a-brick?designNumber=35381&query=${uuid}`;
+        let url = `https://www.lego.com/en-gb/pick-and-build/pick-a-brick?query=${uuid}`;
         return url;
       }
   
@@ -325,17 +326,21 @@ import React, {
   
       const applyLayerAdjustment = (colorKeyCount) => {
         const sortedColorKeyCount = Object.entries(colorKeyCount).sort(
-          (a, b) => b[1] - a[1],
+          (a, b) => b[1] - a[1]
         );
-        const groupSize = Math.ceil(sortedColorKeyCount.length / layers);
-        let layerMultiplier = 1;
-        for (let i = 0; i < sortedColorKeyCount.length; i++) {
-          const [key, count] = sortedColorKeyCount[i];
-          colorKeyCount[key] = count * layerMultiplier;
-          if ((i + 1) % groupSize === 0) {
-            layerMultiplier++;
-          }
-        }
+        
+        const layerGroups = Array.from({ length: layers }, () => []);
+        sortedColorKeyCount.forEach(([key, count], index) => {
+          const groupIndex = Math.floor(index / Math.ceil(sortedColorKeyCount.length / layers));
+          layerGroups[groupIndex].push([key, count]);
+        });
+      
+        layerGroups.forEach((group, groupIndex) => {
+          const multiplier = groupIndex + 1;
+          group.forEach(([key, count]) => {
+            colorKeyCount[key] = count * multiplier;
+          });
+        });
       };
   
       const getPixelColor = (x, y, ctx) => {
@@ -464,13 +469,17 @@ import React, {
               className="form-control"
               id="layersInput"
               min="1"
-              max="10"
+              max="5"
               value={layers}
               onChange={(e) => setLayers(parseInt(e.target.value))}
             />
           </div>
           <div></div>
-          <button className="btn btn-primary" onClick={handleImageUpload}>
+          <button className="btn btn-primary"
+          onClick={handleImageUpload}
+          style={{ backgroundColor: 'black', color: 'white', borderRadius: '5px', padding: '10px 20px', border: 'none', cursor: 'pointer', transition: 'background-color 0.3s ease' }}
+          onMouseOver={(e) => (e.target.style.backgroundColor = '#333')}
+          onMouseOut={(e) => (e.target.style.backgroundColor = 'black')} onClick={handleImageUpload}>
             <div
               ref={generateButtonSpinnerRef}
               className="d-none spinner-border spinner-border-sm text-light mr-2"
@@ -479,7 +488,7 @@ import React, {
             <span ref={generateButtonTextRef}>Generate Instructions</span>
           </button>
           {instructionsGenerated && (
-          <p>Open each link below and add correct amount to basket on Lego website</p>
+          <p>Open each link below and add correct amount to basket on Lego website. Don't forget to buy a backplate with the right size</p>
         )}
           <canvas ref={scaledCanvasRef} style={{ display: "none" }}></canvas>
           <canvas ref={thumbnailCanvasRef} style={{ display: "none" }}></canvas>
@@ -492,9 +501,22 @@ import React, {
             className={`b-${customWidth}x${customHeight}`}
             style={{ width: "100%" }}
           ></canvas>
-          {instructionsGenerated && (
-          <button onClick={downloadCanvas}>Download Instructions</button>
-        )}
+        {instructionsGenerated && (
+  <>
+    <button onClick={downloadCanvas} className="btn btn-primary"
+      style={{ backgroundColor: 'black', color: 'white', borderRadius: '5px', padding: '10px 20px', border: 'none', cursor: 'pointer', transition: 'background-color 0.3s ease' }}
+      onMouseOver={(e) => (e.target.style.backgroundColor = '#333')}
+      onMouseOut={(e) => (e.target.style.backgroundColor = 'black')}>
+      Download Instructions
+    </button>
+    <button onClick={() => window.open('https://zora.co', '_blank')} className="btn btn-secondary"
+      style={{ backgroundColor: 'black', color: 'white',marginLeft: "1%", borderRadius: '5px', padding: '10px 20px', border: 'none', cursor: 'pointer', transition: 'background-color 0.3s ease' }}
+      onMouseOver={(e) => (e.target.style.backgroundColor = '#333')}
+      onMouseOut={(e) => (e.target.style.backgroundColor = 'black')}>
+      Support creator
+    </button>
+  </>
+)}
         </div>
       );
     },

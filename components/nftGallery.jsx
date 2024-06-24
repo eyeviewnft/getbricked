@@ -111,18 +111,12 @@ export default function NFTGallery() {
   return (
     <div className={styles.nft_gallery_page}>
       <div>
-        <div className={styles.fetch_selector_container}>
-          <h2 style={{ fontSize: "20px" }}>Explore NFTs by</h2>
-          <div className={styles.select_container}>
-            <select
-              defaultValue={"connectedWallet"}
-              onChange={(e) => changeFetchMethod(e)}
-            >
-              <option value={"connectedWallet"}>connected wallet</option>
-              <option value={"wallet"}>wallet</option>
-              <option value={"collection"}>collection</option>
-            </select>
-          </div>
+        
+        <div className={styles.title_container}>
+          <h2 style={{ fontSize: "20px", color: "White" }}>Turn any of your NFTs into a Lego set</h2>
+        </div>
+        <div className={styles.subtitle_container}>
+          <h3 style={{ fontSize: "20px", color: "White" }}>Feel free to support project by minting its NFT on Zora</h3>
         </div>
         <div className={styles.inputs_container}>
           <div className={styles.input_button_container}>
@@ -135,6 +129,24 @@ export default function NFTGallery() {
                 />
               </div>
             )}
+            <div>
+    <button
+      onClick={() => window.open('your_link_here', '_blank')}
+      style={{
+        backgroundColor: 'white',
+        color: 'black',
+        borderRadius: '5px',
+        padding: '10px 20px',
+        border: 'none',
+        cursor: 'pointer',
+        transition: 'background-color 0.3s ease',
+        marginRight: '10px'
+      }}
+      onMouseOver={(e) => (e.target.style.backgroundColor = '#f0f0f0')}
+      onMouseOut={(e) => (e.target.style.backgroundColor = 'white')}
+    >
+      Open Link
+    </button></div>
             <div className={styles.select_container}>
               <select
                 onChange={(e) => setChain(e.target.value)}
@@ -153,7 +165,7 @@ export default function NFTGallery() {
           </div>
         </div>
         {collectionNames.length > 0 && (
-          <div className={styles.select_container}>
+          <div className={styles.select_container} >
             <select
               onChange={(e) => setSelectedCollection(e.target.value)}
               defaultValue=""

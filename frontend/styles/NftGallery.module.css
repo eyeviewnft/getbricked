@@ -34,21 +34,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 0rem;
+  gap: 1rem;
   margin-bottom: 1.5rem;
-
-}
-
-.title_container {
-  margin-bottom: 10px;
-  text-align: center;
-  display: block;
-}
-
-.subtitle_container {
-  margin-top: 10px;
-  text-align: center;
-  display: block;
 }
 
 .select_container {
@@ -59,7 +46,6 @@
   background-color: #ecf0f9;
   cursor: pointer;
   border-radius: 8px;
-  margin-bottom: 1%;
 }
 
 .select_container select {
@@ -152,7 +138,6 @@
 .loading_box {
   width: 100%;
   display: flex;
-  color: white;
   justify-content: center;
   grid-column-start: 2;
   grid-column-end: 4;

@@ -1,20 +1,20 @@
 
-
 .navbar {
-	justify-content: center;
-	width: 100%;
-	gap: 1rem;
-	margin-bottom: 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 1rem;
+  margin-bottom: 0rem;
 }
 
-
-.alchemy_logo{
-	width: 4rem;
-	margin: "2%";
-	cursor: pointer;
+.alchemy_logo {
+  width: 12rem;
+  margin: 2%;
+  cursor: pointer;
 }
 
-.connectButton{
-	height: 1rem;
-	margin-right: 0;
+.connectButton {
+  height: 1rem;
+  margin-left: auto;
 }
