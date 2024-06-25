@@ -17,7 +17,7 @@ export default async function handler(req, res) {
 	const alchemy = new Alchemy(settings);
 
 	try {
-		const nfts = await alchemy.nft.getNftsForOwner(address, {
+		const nfts = await alchemy.nft.ownedNfts(address, {
 			pageSize: pageSize ? pageSize : 100,
 			excludeFilters: excludeFilter,
 			pageKey: pageKey ? pageKey : "",
