@@ -10,16 +10,16 @@ export default async function handler(req, res) {
 	}
 
 	const settings = {
-		apiKey: process.env.NEXT_PUBLIC_ALCHEMY_API_KEY,
+		apiKey: process.env.ALCHEMY_API_KEY,
 		network: Network[chain],
 	};
 
 	const alchemy = new Alchemy(settings);
 
 	try {
-		const nfts = await alchemy.nft.ownedNfts(address, {
+		const nfts = await alchemy.nft.getNftsForOwner(address, {
 			pageSize: pageSize ? pageSize : 100,
-			excludeFilters: excludeFilter,
+			excludeFilters: excludeFilter && [NftFilters.SPAM],
 			pageKey: pageKey ? pageKey : "",
 		});
 
@@ -31,13 +31,15 @@ export default async function handler(req, res) {
 				contract: contract.address,
 				symbol: contract.symbol,
 				collectionName: contract.name,
-				media: media.length > 0 ? media[0] : "https://via.placeholder.com/500",
+				media: Array.isArray(media) && media[0]
+					? media[0]
+					: "https://via.placeholder.com/500",
 				verified: contract.openSea?.safelistRequestStatus,
 				tokenType,
 				tokenId,
 				title,
 				description,
-				format: media.length > 0 ?.format ? media[0]?.format : "png",
+				format: Array.isArray(media) && media[0]?.format ? media[0]?.format : "png",
 			};
 		});
 		if (excludeFilter) {
