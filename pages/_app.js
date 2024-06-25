@@ -7,6 +7,7 @@ import { mainnet, polygon, optimism, arbitrum } from "wagmi/chains";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
 import MainLayout from "../layout/mainLayout";
+import Script from 'next/script'
 
 const { chains, provider } = configureChains(
   [mainnet, polygon, optimism],
@@ -35,6 +36,7 @@ function MyApp({ Component, pageProps }) {
         chains={chains}
       >
         <MainLayout>
+        <script defer src="https://cloud.umami.is/script.js" data-website-id={process.env.NEXT_PUBLIC_UMAMI_ID}/>
           <Component {...pageProps} />
         </MainLayout>
       </RainbowKitProvider>

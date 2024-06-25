@@ -7,45 +7,47 @@ import React, {
   import FaExternalLinkAlt from "react-icons/fa";
   
   const bricks = {
-    4211399: "#7f7f7f",    // MEDIUM STONE GREY
-302424:  "#b3b3b3",    // JAUNE (YELLOW)
-302401:  "#ffffff",    // BLANC (WHITE)
-6151664: "#d9c58a",    // DARK AZUR
-302421:  "#ff2928",    // ROUGE (RED)
-6252043: "#4d95fb",    // BLEU TRANSPARENT (TRANSPARENT BLUE)
-6073040: "#ffed02",    // FLAME YELLOWISH ORANGE
-6252042: "#ff9634",    // ROUGE TRANSPARENT (TRANSPARENT RED)
-4621557: "#b9e74f",    // BRIGHT YELLOWISH GREEN
-4184108: "#506c9d",    // EARTH BLUE
-4183901: "#88323f",    // NEW DARK RED
-6186012: "#835138",    // DARK ORANGE
-6258091: "#feb5f0",    // CORAL
-6330584: "#9c734f",    // NOUGAT
-6252041: "#fffbe0",    // TRANSPARENT
-4524929: "#7a803a",    // ORANGE
-4210719: "#7e7e7e",    // DARK STONE GREY
-6213778: "#ddec9b",    // BRIGHT BLUGREEN
-4179826: "#90bbf7",    // MEDIUM BLUE
-6096942: "#ff719d",    // MAGENTA
-6217797: "#1fa6a0",    // ROSE
-4524929: "#ffddb9",    // ORANGE
-302421:  "#503b16",    // ROUGE (RED)
-4524929: "#d8f9f0",    // ORANGE
-4211399: "#71bddc",    // MEDIUM STONE GREY
-302428:  "#d0a7e3",    // DARK GREEN
-302421:  "#fc44bf",    // ROUGE (RED)
-4524929: "#ffbf31",    // ORANGE
-302421:  "#c1e0fe",    // ROUGE (RED)
-4211399: "#3f99cc",    // MEDIUM STONE GREY
-4524929: "#ac603d",    // ORANGE
-4211399: "#a69579",    // MEDIUM STONE GREY
-4211399: "#99a6af",    // MEDIUM STONE GREY
-4524929: "#e79f71",    // ORANGE
-302424:  "#fffe88",    // JAUNE (YELLOW)
-4524929: "#6cd554",    // ORANGE
-302424:  "#fffd04",    // JAUNE (YELLOW)
-4524929: "#38c764",     // ORANGE
-302426: "#000000"      // BLACK
+    4159553: "#d9c58a", // Light khaki (Beige)
+4211399: "#7f7f7f", // Gray (Medium Stone Grey)
+302424: "#ffed02", // Yellow
+4210719: "#7e7e7e", // Dark gray (Dark Stone Grey)
+302426: "#000000", // Black (not in original list, added as closest match)
+302401: "#ffffff", // White
+6215606: "#a69579", // Taupe (Medium Nougat, closest match)
+6252039: "#835138", // Brown (Transparent Brown)
+6252040: "#ff9634", // Orange (Transparent Orange)
+6252045: "#fffe88", // Pale yellow (Transparent Yellow)
+6252042: "#ff2928", // Bright red (Transparent Red)
+6096942: "#fc44bf", // Magenta
+6231376: "#d0a7e3", // Lavender (Medium Lilac)
+6258091: "#ff719d", // Pink (Coral)
+4524929: "#ff9634", // Orange
+6252043: "#90bbf7", // Light blue (Transparent Blue)
+6058014: "#fffbe0", // Light yellow (Cool Yellow)
+4621557: "#6cd554", // Bright green (Bright Yellowish Green)
+6186012: "#ac603d", // Sienna (Dark Orange)
+4539114: "#88323f", // Maroon (New Dark Red)
+302428: "#506c9d", // Steel blue (Dark Green, color mismatch)
+4619521: "#feb5f0", // Light pink (Medium Lavender)
+6055169: "#7a803a", // Olive green (Earth Green)
+6073040: "#ffbf31", // Gold (Flame Yellowish Orange)
+6330584: "#9c734f", // Tan (Nougat)
+6213778: "#1fa6a0", // Teal (Bright Blugreen)
+4184108: "#506c9d", // Steel blue (Earth Blue)
+4549436: "#e79f71", // Light orange (Sand Yellow)
+6194729: "#503b16", // Dark brown
+6069887: "#ffbf31", // Gold (Warm Gold)
+6184484: "#71bddc", // Light sky blue (Light Royal Blue)
+4221744: "#835138", // Brown (Reddish Brown)
+302421: "#ff2928", // Bright red
+6252044: "#3f99cc", // Medium blue (Transparent Dark Blue)
+6217797: "#ff719d", // Pink
+6252046: "#38c764", // Medium green (Transparent Green)
+6099189: "#d8f9f0", // Mint (Sand Green, color mismatch)
+6031883: "#feb5f0", // Light pink (Light Rose)
+6357797: "#ffddb9", // Peach (Light Nougat)
+6401817: "#b9e74f", // Lime green (Bright Green)
+302423: "#4d95fb", // Sky blue (Blue)
   };
   
   const ImageProcessor = forwardRef(
@@ -479,7 +481,7 @@ import React, {
           onClick={handleImageUpload}
           style={{ backgroundColor: 'black', color: 'white', borderRadius: '5px', padding: '10px 20px', border: 'none', cursor: 'pointer', transition: 'background-color 0.3s ease' }}
           onMouseOver={(e) => (e.target.style.backgroundColor = '#333')}
-          onMouseOut={(e) => (e.target.style.backgroundColor = 'black')} onClick={handleImageUpload}>
+          onMouseOut={(e) => (e.target.style.backgroundColor = 'black')}>
             <div
               ref={generateButtonSpinnerRef}
               className="d-none spinner-border spinner-border-sm text-light mr-2"
@@ -509,7 +511,7 @@ import React, {
       onMouseOut={(e) => (e.target.style.backgroundColor = 'black')}>
       Download Instructions
     </button>
-    <button onClick={() => window.open('https://zora.co', '_blank')} className="btn btn-secondary"
+    <button onClick={() => window.open('https://zora.co/collect/base:0xb47e183c43191eb7b88be8b237329bf98248dd50/1?referrer=0xA8F30Bd1165057F81C7b6629E2501e428f4691F2', '_blank')} className="btn btn-secondary"
       style={{ backgroundColor: 'black', color: 'white',marginLeft: "1%", borderRadius: '5px', padding: '10px 20px', border: 'none', cursor: 'pointer', transition: 'background-color 0.3s ease' }}
       onMouseOver={(e) => (e.target.style.backgroundColor = '#333')}
       onMouseOut={(e) => (e.target.style.backgroundColor = 'black')}>

@@ -131,7 +131,7 @@ export default function NFTGallery() {
             )}
             <div>
     <button
-      onClick={() => window.open('your_link_here', '_blank')}
+      onClick={() => window.open('https://zora.co/collect/base:0xb47e183c43191eb7b88be8b237329bf98248dd50/1?referrer=0xA8F30Bd1165057F81C7b6629E2501e428f4691F2', '_blank')}
       style={{
         backgroundColor: 'white',
         color: 'black',
@@ -145,7 +145,7 @@ export default function NFTGallery() {
       onMouseOver={(e) => (e.target.style.backgroundColor = '#f0f0f0')}
       onMouseOut={(e) => (e.target.style.backgroundColor = 'white')}
     >
-      Open Link
+      Support Creator
     </button></div>
             <div className={styles.select_container}>
               <select
