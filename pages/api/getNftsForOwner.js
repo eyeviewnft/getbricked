@@ -30,7 +30,7 @@ export default async function handler(req, res) {
 			return {
 				contract: contract.address,
 				symbol: contract.symbol,
-				collectionName: contract.openSea?.collectionName,
+				collectionName: contract.name,
 				media: Array.isArray(media) && media[0]
             ? media[0]
             : "https://via.placeholder.com/500",
