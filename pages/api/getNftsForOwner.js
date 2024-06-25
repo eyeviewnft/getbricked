@@ -30,13 +30,16 @@ export default async function handler(req, res) {
         contract: contract.address,
         symbol: contract.symbol,
         collectionName: contract.name,
-        media: media[0] ? media[0] : "https://via.placeholder.com/500",
+        media:
+          Array.isArray(media) && media[0]
+            ? media[0]
+            : "https://via.placeholder.com/500",
         verified: contract.openSea?.safelistRequestStatus,
         tokenType,
         tokenId,
         title,
         description,
-        format: media[0]?.format ? media[0]?.format : "png",
+        format: Array.isArray(media) && media[0] ? media[0]?.format : "png",
       };
     });
     if (excludeFilter) {
