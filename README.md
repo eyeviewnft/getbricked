@@ -3,7 +3,6 @@
 This small tool allow users to get required instruction and bricks references to turn their NFT into LEGO sets. It support ERC721 and ERC1155 with media hosted on IPFS.
 
 ## Resources
-Please refer to CW3D's documentation and the following useful links for an in depth explanation of how to work with projects bootstrapped with CW3D:
 - [lego-art](https://github.com/Cutwell/lego-art/blob/main/static/main.js)
 - Ethers.js
 - Rainbowkit
