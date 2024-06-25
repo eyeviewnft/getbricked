@@ -39,7 +39,7 @@ export default async function handler(req, res) {
 				tokenId,
 				title,
 				description,
-				format: media[0]?.format ? media[0]?.format : "png",
+				format: Array.isArray(media) && media[0]?.format ? media[0]?.format : "png",
 			};
 		});
 		if (excludeFilter) {
