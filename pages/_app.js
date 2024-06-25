@@ -11,10 +11,10 @@ import Script from "next/script";
 
 const { chains, provider } = configureChains(
   [mainnet, polygon, optimism],
-  [publicProvider({ apiKey: process.env.ALCHEMY_API_KEY }), publicProvider()],
+  [alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_API_KEY }), publicProvider()],
 );
 const { connectors } = getDefaultWallets({
-  appName: "My Alchemy DApp",
+  appName: "getBricked",
   projectId: "b5e8c1df1f707e8d53ebcf4af2e4ff0e",
   chains,
 });
