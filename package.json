@@ -1,13 +1,12 @@
 {
-  "name": "my-nft-explorer",
+  "name": "getBricked",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "marketplace": "npx create-web3-dapp marketplace"
+    "lint": "next lint"
   },
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
