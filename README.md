@@ -3,6 +3,7 @@
 This small tool allow users to get required instruction and bricks references to turn their NFT into LEGO sets. It support ERC721 and ERC1155 with media hosted on IPFS.
 
 ## Resources
+this tool was made thanks to the following awesome tools:
 - [lego-art](https://github.com/Cutwell/lego-art/blob/main/static/main.js)
 - Ethers.js
 - Rainbowkit
